@@ -12,3 +12,6 @@ Route::get('/', function(){
 
 });
 Route::resource('interest', InterestRecordController::class);
+Route::view('/about-us', 'about');
+Route::view('/privacy-policy', 'privacy');
+Route::view('/contact-us', 'contact');
