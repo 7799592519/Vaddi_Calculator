@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('interest_records', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('person_name');
             $table->decimal('principal_amount', 12, 2);
             $table->decimal('interest_rate', 5, 2);

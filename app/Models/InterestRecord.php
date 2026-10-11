@@ -9,6 +9,7 @@ class InterestRecord extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'user_id',
         'person_name',
         'principal_amount',
         'interest_rate',
