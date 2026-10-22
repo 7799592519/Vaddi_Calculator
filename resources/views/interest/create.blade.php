@@ -42,7 +42,7 @@
                         <label class="form-label">వడ్డీ రకం</label>
                         <select name="interest_type" class="form-select" required>
                             <option value="monthly_rupees">నూటికి నెలకు (రూపాయల్లో - బారు వడ్డీ)</option>
-                            <option value="yearly_percentage">సంవత్సరానికి శాతం (Yearly %)</option>
+                            {{-- <option value="yearly_percentage">సంవత్సరానికి శాతం (Yearly %)</option> --}}
                         </select>
                     </div>
 

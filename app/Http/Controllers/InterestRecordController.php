@@ -32,11 +32,12 @@ class InterestRecordController extends Controller
             'start_date' => 'required|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
         ]);
-
-        $startDate = Carbon::parse($request->start_date);
+$startDate = Carbon::parse($request->start_date);
         $endDate = $request->end_date ? Carbon::parse($request->end_date) : Carbon::now();
 
-        $months = $startDate->diffInMonths($endDate);
+        // 1. ఇక్కడ (int) అని యాడ్ చేయండి. దీనివల్ల పాయింట్స్ రాకుండా కేవలం నెలలు(12) మాత్రమే వస్తాయి.
+        $months = (int) $startDate->diffInMonths($endDate); 
+        
         $remainingDaysDate = $startDate->copy()->addMonths($months);
         $days = $remainingDaysDate->diffInDays($endDate);
         $totalMonths = $months + ($days / 30);
@@ -45,7 +46,6 @@ class InterestRecordController extends Controller
         $rate = $request->interest_rate;
         $totalInterest = 0;
 
-        // 2. ఫార్ములా సరిచేయబడింది (* గుర్తులు యాడ్ చేశాం)
         if ($request->interest_type == 'monthly_rupees') {
             $totalInterest = ($principal * $rate * $totalMonths) / 100;
         } else {

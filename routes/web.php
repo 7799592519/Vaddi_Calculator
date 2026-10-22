@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InterestRecordController; // మీ కంట్రోలర్ ఇక్కడ యాడ్ చేశాం
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SitemapController;
 
 // Home page
 Route::get('/', function () {
@@ -14,6 +15,7 @@ Route::get('/', function () {
 Route::view('/about-us', 'about');
 Route::view('/privacy-policy', 'privacy');
 Route::view('/contact-us', 'contact');
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 // Dashboard (Breeze default)
 Route::get('/dashboard', function () {
